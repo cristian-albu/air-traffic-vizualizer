@@ -1,0 +1,3 @@
+export const GLOBE_RADIUS = 5;
+export const AIR_FLIGHT_START_RADIUS = GLOBE_RADIUS * 1.04;
+export const AIR_FLIGHT_RADIUS = GLOBE_RADIUS * 1.04;
