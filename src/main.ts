@@ -6,12 +6,30 @@ import { GLOBE_RADIUS } from "./constants";
 
 const world = new World();
 
-const airport = new Airport({ coordinates: { lat: 33, lon: 33, radius: GLOBE_RADIUS }, parent: world.earth.earthMesh });
-const airport2 = new Airport({ coordinates: { lat: 80, lon: 80, radius: GLOBE_RADIUS }, parent: world.earth.earthMesh });
+type AirportData = {
+  lat: number;
+  lon: number;
+  name: string;
+  city: string;
+  country: string;
+};
+
+const airportsData: AirportData[] = await fetch("/airports.json")
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .catch((err) => console.log(err));
+
+const airports = airportsData.map(
+  ({ name, lat, lon }) =>
+    new Airport({ coordinates: { lat, lon, radius: GLOBE_RADIUS }, parent: world.earth.earthMesh, name })
+);
 
 const plane = new Plane({ coordinates: { lat: 55, lon: -55, radius: GLOBE_RADIUS }, parent: world.earth.earthMesh });
 
-plane.setFlightSchedule([airport, airport2, airport, airport2, airport, airport2]);
+plane.setFlightSchedule(airports);
 world.attachToAnimation(() => plane.animateFlight());
 
 world.animate();

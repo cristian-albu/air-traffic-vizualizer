@@ -55,12 +55,13 @@ export default abstract class AirObject {
   /** Method to convert Globe coordinates (lat, lon, radius) to Cartesian (x, y, z) */
   public getGlobeToCartesian(lat: number, lon: number, radius: number) {
     // Convert latitude and longitude from degrees to radians
-    const theta = (90 - lat) * (Math.PI / 180);
-    const phi = lon * (Math.PI / 180);
+    const latRad = lat * (Math.PI / 180); // Latitude in radians
+    const lonRad = lon * (Math.PI / 180); // Longitude in radians
 
-    const x = radius * Math.cos(theta) * Math.cos(phi);
-    const y = radius * Math.cos(theta) * Math.sin(phi);
-    const z = radius * Math.sin(theta);
+    // Adjustments: Y-axis should directly reflect latitude, longitude affects X/Z
+    const x = radius * Math.cos(latRad) * Math.sin(lonRad); // Longitude affects X-axis (East-West)
+    const y = radius * Math.sin(latRad); // Latitude affects Y-axis (North-South)
+    const z = radius * Math.cos(latRad) * Math.cos(lonRad); // Longitude affects Z-axis
 
     return new THREE.Vector3(x, y, z);
   }
@@ -71,7 +72,7 @@ export default abstract class AirObject {
     const r = Math.sqrt(x * x + y * y + z * z);
 
     // Calculate latitude (in radians), then convert to degrees
-    const lat = Math.asin(z / r) * (180 / Math.PI);
+    const lat = 90 - Math.acos(z / r) * (180 / Math.PI);
 
     // Calculate longitude (in radians), then convert to degrees
     const lon = Math.atan2(y, x) * (180 / Math.PI);

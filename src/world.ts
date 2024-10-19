@@ -49,9 +49,9 @@ export default class World {
 
     this.animationActions.forEach((fn) => fn());
 
-    this.earth.earthMesh.rotation.y += 0.0005;
-    this.earth.cloudsMesh.rotation.y += 0.0005;
-    this.earth.cloudsMesh.rotation.x += 0.0002;
+    this.earth.earthMesh.rotation.y += 0.0001;
+    this.earth.cloudsMesh.rotation.y += 0.0001;
+    this.earth.cloudsMesh.rotation.x += 0.00005;
     this.earth.atmosphere.lookAt(this.camera.position);
     this.controls.update();
     this.renderer.render(this.scene, this.camera);

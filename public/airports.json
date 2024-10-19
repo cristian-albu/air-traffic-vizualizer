@@ -1,0 +1,142 @@
+[
+  {
+    "lat": 40.6413,
+    "lon": -73.7781,
+    "name": "John F. Kennedy International Airport (JFK)",
+    "city": "New York",
+    "country": "USA"
+  },
+  {
+    "lat": 33.9416,
+    "lon": -118.4085,
+    "name": "Los Angeles International Airport (LAX)",
+    "city": "Los Angeles",
+    "country": "USA"
+  },
+  {
+    "lat": 51.47,
+    "lon": -0.4543,
+    "name": "Heathrow Airport (LHR)",
+    "city": "London",
+    "country": "UK"
+  },
+  {
+    "lat": 49.0097,
+    "lon": 2.5479,
+    "name": "Charles de Gaulle Airport (CDG)",
+    "city": "Paris",
+    "country": "France"
+  },
+  {
+    "lat": 35.5494,
+    "lon": 139.7798,
+    "name": "Tokyo International Airport (HND)",
+    "city": "Tokyo",
+    "country": "Japan"
+  },
+  {
+    "lat": -33.9399,
+    "lon": 151.1753,
+    "name": "Sydney Kingsford Smith Airport (SYD)",
+    "city": "Sydney",
+    "country": "Australia"
+  },
+  {
+    "lat": 52.3105,
+    "lon": 4.7683,
+    "name": "Amsterdam Airport Schiphol (AMS)",
+    "city": "Amsterdam",
+    "country": "Netherlands"
+  },
+  {
+    "lat": 40.7769,
+    "lon": -73.874,
+    "name": "LaGuardia Airport (LGA)",
+    "city": "New York",
+    "country": "USA"
+  },
+  {
+    "lat": 37.6213,
+    "lon": -122.379,
+    "name": "San Francisco International Airport (SFO)",
+    "city": "San Francisco",
+    "country": "USA"
+  },
+  {
+    "lat": 40.128,
+    "lon": 32.995,
+    "name": "Esenboğa Airport (ESB)",
+    "city": "Ankara",
+    "country": "Turkey"
+  },
+  {
+    "lat": -22.809,
+    "lon": -43.2436,
+    "name": "Galeão International Airport (GIG)",
+    "city": "Rio de Janeiro",
+    "country": "Brazil"
+  },
+  {
+    "lat": 55.9726,
+    "lon": 37.4146,
+    "name": "Sheremetyevo International Airport (SVO)",
+    "city": "Moscow",
+    "country": "Russia"
+  },
+  {
+    "lat": 40.0801,
+    "lon": 116.5846,
+    "name": "Beijing Capital International Airport (PEK)",
+    "city": "Beijing",
+    "country": "China"
+  },
+  {
+    "lat": 30.7848,
+    "lon": 114.2081,
+    "name": "Wuhan Tianhe International Airport (WUH)",
+    "city": "Wuhan",
+    "country": "China"
+  },
+  {
+    "lat": 23.8526,
+    "lon": 90.4095,
+    "name": "Hazrat Shahjalal International Airport (DAC)",
+    "city": "Dhaka",
+    "country": "Bangladesh"
+  },
+  {
+    "lat": -6.1275,
+    "lon": 106.6537,
+    "name": "Soekarno-Hatta International Airport (CGK)",
+    "city": "Jakarta",
+    "country": "Indonesia"
+  },
+  {
+    "lat": -26.1336,
+    "lon": 28.2428,
+    "name": "O.R. Tambo International Airport (JNB)",
+    "city": "Johannesburg",
+    "country": "South Africa"
+  },
+  {
+    "lat": 55.6181,
+    "lon": 12.656,
+    "name": "Copenhagen Airport (CPH)",
+    "city": "Copenhagen",
+    "country": "Denmark"
+  },
+  {
+    "lat": 60.3172,
+    "lon": 24.9633,
+    "name": "Helsinki-Vantaa Airport (HEL)",
+    "city": "Helsinki",
+    "country": "Finland"
+  },
+  {
+    "lat": -33.393,
+    "lon": -70.7858,
+    "name": "Arturo Merino Benítez International Airport (SCL)",
+    "city": "Santiago",
+    "country": "Chile"
+  }
+]

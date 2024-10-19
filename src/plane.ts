@@ -19,7 +19,7 @@ export default class Plane extends AirObject {
   private flightSchedule: Airport[] = [];
   private currentFlightIndex = 0;
   private trailPoints: THREE.Vector3[] = [];
-  private maxTrailLength = 50;
+  private maxTrailLength = 500;
   private trailLine: THREE.Line | null = null;
 
   constructor({ parent, coordinates }: PlaneProps) {
@@ -31,7 +31,7 @@ export default class Plane extends AirObject {
   }
 
   private createTrailLine(): THREE.Line | null {
-    const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+    const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
     const geometry = new THREE.BufferGeometry().setFromPoints(this.trailPoints);
     return new THREE.Line(geometry, material);
   }
@@ -91,7 +91,7 @@ export default class Plane extends AirObject {
     return airport.position
       .clone()
       .normalize()
-      .multiplyScalar(GLOBE_RADIUS * 1.01);
+      .multiplyScalar(GLOBE_RADIUS * 1.04);
   }
 
   private calculateMidpoint(currCoordinates: THREE.Vector3, nextCoordinates: THREE.Vector3): THREE.Vector3 {
@@ -168,23 +168,28 @@ export default class Plane extends AirObject {
 
   private updatePlaneOrientation(): void {
     const tangent = this.flightCurve?.curve.getTangentAt(this.flightProgress).normalize();
-    if (!tangent || !this.model) return;
+    if (!tangent || !this.model || !this.flightCurve) return;
 
-    const worldUp = new THREE.Vector3(0, 1, 0);
-    const right = new THREE.Vector3().crossVectors(tangent, worldUp).normalize();
-    const up = new THREE.Vector3().crossVectors(right, tangent).normalize();
+    // Get the current position of the plane on the curve
+    const currPoint = this.flightCurve.curve.getPointAt(this.flightProgress).normalize();
 
+    // The 'up' direction should be the radial direction (from the sphere center to the plane)
+    const radialUp = currPoint.clone().normalize(); // Vector pointing outwards from the globe's center
+    const right = new THREE.Vector3().crossVectors(tangent, radialUp).normalize(); // Right direction perpendicular to both tangent and radial
+    const adjustedUp = new THREE.Vector3().crossVectors(right, tangent).normalize(); // Final up vector to ensure correct orientation
+
+    // Create the rotation matrix
     const rotationMatrix = new THREE.Matrix4().set(
       right.x,
-      up.x,
+      adjustedUp.x,
       -tangent.x,
       0,
       right.y,
-      up.y,
+      adjustedUp.y,
       -tangent.y,
       0,
       right.z,
-      up.z,
+      adjustedUp.z,
       -tangent.z,
       0,
       0,
@@ -193,7 +198,7 @@ export default class Plane extends AirObject {
       1
     );
 
-    rotationMatrix.multiply(new THREE.Matrix4().makeRotationY(Math.PI / 2));
+    // Apply the rotation matrix to the model
     const quaternion = new THREE.Quaternion().setFromRotationMatrix(rotationMatrix);
     this.model.quaternion.copy(quaternion);
   }
